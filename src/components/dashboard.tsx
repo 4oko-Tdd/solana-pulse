@@ -18,7 +18,7 @@ export function Dashboard({ data }: { data: PulseData }) {
           value={data.networkHeat.value}
         />
       </div>
-      <p className="pt-8 text-center text-zinc-500">Ogrik</p>
+      <p className="pt-8 text-center text-zinc-500">Ogrik · Flip Journal Community Russia</p>
     </div>
   )
 }
