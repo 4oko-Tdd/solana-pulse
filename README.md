@@ -1,46 +1,73 @@
-# Solana Pulse
+# React + TypeScript + Vite
 
-Real-time Solana ecosystem health monitor. Tracks **changes, not absolutes** — delivering concise signals about where the network is heading.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## What It Tracks
+Currently, two official plugins are available:
 
-### 1. Ecosystem Activity
-- Active wallets (24h)
-- Transaction count (24h)
-- Signal: trending up / flat / down
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### 2. DeFi Movement
-- TVL change (24h and 7d delta)
-- Directional signal, not raw numbers
+## React Compiler
 
-### 3. Protocol Traction
-- Top 1-2 protocols with unusual activity growth
-- Surface what's moving, ignore what's static
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### 4. Fees & Volume (optional)
-- Network "heat" indicator
-- Spike detection for unusual activity
+## Expanding the ESLint configuration
 
-## Design Principles
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- **Deltas over absolutes** — always show direction of change, never raw totals in isolation
-- **Signal over noise** — compress complex data into actionable up/flat/down indicators
-- **Minimal v0** — start with the smallest useful set of metrics and expand based on real usage
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## Getting Started
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-```bash
-# Clone
-git clone https://github.com/4oko-Tdd/solana-pulse.git
-cd solana-pulse
-
-# Install dependencies
-npm install
-
-# Run
-npm start
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## License
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-MIT
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
