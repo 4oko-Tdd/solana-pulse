@@ -1,65 +1,59 @@
 # Solana Pulse
 
-Real-time Solana ecosystem health monitor. Tracks **changes, not absolutes** — delivering concise signals about where the network is heading.
+Daily signal dashboard for the Solana ecosystem. **Signals, not noise** — one glance to know what's happening today.
 
-## What It Tracks
+## What It Shows
 
-### 1. Ecosystem Activity
-- Active wallets (7d change)
-- Transaction count (7d change)
-- Signal: trending up / flat / down
+6 signal cards, each answering one question:
 
-### 2. DeFi Movement
-- TVL change (24h delta)
-- Total TVL with directional signal
-- Directional signal, not raw numbers
+| Card | Question | Data Source |
+|------|----------|-------------|
+| **Network Activity** | Is the network heating up? | Dune (wallets + TX 7d change) |
+| **DeFi Momentum** | Are funds flowing in? | Dune (TVL 24h delta) |
+| **User Demand** | Is usage intensifying? | Mock (v0) |
+| **Attention / Fees** | Is there speculative interest? | Mock (v0) |
+| **Protocol Highlight** | Any protocol surging? | Mock (v0) |
+| **Stability** | Is the network healthy? | Mock (v0) |
 
-### 3. Protocol Traction
-- Top protocols with unusual activity growth
-- Surface what's moving, ignore what's static
-
-### 4. Network Heat
-- Combined TX + wallet activity indicator (low / medium / high)
-- Derived from rate of change, not absolutes
+Each card shows: **▲/▬/▼ arrow → state phrase → small context**
 
 ## Design Principles
 
-- **Deltas over absolutes** — always show direction of change, never raw totals in isolation
-- **Signal over noise** — compress complex data into actionable up/flat/down indicators
-- **Minimal v0** — start with the smallest useful set of metrics and expand based on real usage
+- **Signal-first** — arrow → state → number (small). Not the other way around.
+- **Deltas over absolutes** — every metric is a change vs 7-day average
+- **One-glance UX** — understand "what's up with Solana today" in 5 seconds
+- **Daily snapshot** — not real-time, not analytics. One snapshot per day.
 
 ## Tech Stack
 
 **Frontend:**
 - [Vite](https://vite.dev) + [React 19](https://react.dev) + TypeScript
 - [Tailwind CSS v4](https://tailwindcss.com)
-- [shadcn/ui](https://ui.shadcn.com) (Card, Badge)
-- [Lucide](https://lucide.dev) icons
+- Sora + IBM Plex Mono fonts
+- Solana brand colors (#9945FF, #14F195, #00C2FF)
 
 **Backend:**
 - [Express](https://expressjs.com) API server
-- [Dune Analytics SDK](https://docs.dune.com) — query 6663338 for Solana ecosystem metrics
-- Vite dev proxy forwards `/api` → Express in development
+- [Dune Analytics SDK](https://docs.dune.com) — query 6663338
 
 ## Project Structure
 
 ```
 server/
-  index.ts             # Express server — GET /api/pulse, Dune SDK integration
-  tsconfig.json        # Server-specific TypeScript config
+  index.ts               # Express server — GET /api/pulse, Dune SDK + signal logic
 src/
   components/
-    ui/                # shadcn/ui primitives (Card, Badge)
-    dashboard.tsx      # 2x2 grid layout composing all cards
-    signal-card.tsx    # Reusable metric card with directional arrows
-    protocol-card.tsx  # Protocol traction with growth badges
-    heat-card.tsx      # Network load flame indicator
-    pulse-header.tsx   # Title + last updated timestamp
+    ui/                  # shadcn/ui primitives (Card, Badge)
+    dashboard.tsx        # 3×2 grid layout + micro-legend + footer
+    pulse-signal-card.tsx # Reusable signal card (arrow + state + context)
+    pulse-header.tsx     # Title + subtitle + date
   lib/
-    api.ts             # Frontend fetch client — calls /api/pulse
-    types.ts           # Signal, PulseMetric, PulseData type definitions
-    mock-data.ts       # Fallback data when API is unavailable
-    utils.ts           # cn() utility
+    api.ts               # Frontend fetch client
+    types.ts             # SignalDirection, SignalCard, PulseSnapshot
+    mock-data.ts         # Fallback data (6 cards)
+    utils.ts             # cn() utility
+docs/
+  plans/                 # Design documents
 ```
 
 ## Getting Started
@@ -78,8 +72,7 @@ cp .env.example .env
 # Edit .env and add your DUNE_API_KEY
 
 # Start both servers
-npm run dev:server   # terminal 1 — Express on :3001
-npm run dev          # terminal 2 — Vite on :5173
+npm run dev:all
 ```
 
 ### Without API key (mock data)
@@ -98,35 +91,28 @@ The dashboard will show mock data with an amber "Live data unavailable" banner.
 | `npm run dev:server` | Start Express API server |
 | `npm run dev:all` | Start both servers concurrently |
 | `npm run build` | Type-check + production build |
-| `npm run preview` | Preview production build |
 | `npm run lint` | Run ESLint |
 
 ## Data Flow
 
 ```
-Browser (React) → fetch("/api/pulse") → Express (:3001) → Dune SDK → Dune API (query 6663338)
+Browser (React) → fetch("/api/pulse") → Express (:3001) → Dune SDK → Dune API
                                               ↓
-                                     Transform to PulseData
+                                     Transform to PulseSnapshot
+                                     (2 real + 4 mock signals)
                                               ↓
-                                     JSON response → Dashboard renders signals
+                                     JSON response → 6 signal cards
 ```
-
-## Dune Query Response → PulseData Mapping
-
-| Dune Field | Dashboard Metric |
-|---|---|
-| `weekly_active_addresses_change` | Ecosystem Activity → Active Wallets |
-| `weekly_transactions_change` | Ecosystem Activity → Transactions |
-| `daily_tvl_usd_change` | DeFi Movement → TVL Change |
-| `daily_tvl_usd` | DeFi Movement → Total TVL |
 
 ## Roadmap
 
-- [x] Mock data dashboard with signal cards
-- [x] Dune Analytics API integration (Express backend)
-- [ ] Auto-refresh / polling
-- [ ] Protocol traction detection logic
-- [ ] Historical signal trends
+- [x] Signal card dashboard (6 cards, v0 format)
+- [x] Dune Analytics integration (Network Activity + DeFi Momentum)
+- [x] Solana-branded design (gradient, glass cards, Sora font)
+- [ ] Wire real data for User Demand, Attention/Fees
+- [ ] Protocol traction detection (DeFiLlama)
+- [ ] Stability/congestion signal (Solana RPC)
+- [ ] Auto-refresh / daily cron
 
 ## License
 

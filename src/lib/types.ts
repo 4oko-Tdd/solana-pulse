@@ -1,26 +1,14 @@
-export type Signal = "up" | "down" | "flat"
+export type SignalDirection = "up" | "down" | "flat"
 
-export type PulseMetric = {
-  label: string
-  value: string
-  signal: Signal
-  subLabel?: string
+export type SignalCard = {
+  id: string
+  title: string
+  signal: SignalDirection
+  state: string
+  context?: string
 }
 
-export type ProtocolHighlight = {
-  name: string
-  growth: string
-  signal: Signal
-}
-
-export type PulseData = {
-  timestamp: string
-  ecosystemActivity: PulseMetric[]
-  defiMovement: PulseMetric[]
-  protocolTraction: ProtocolHighlight[]
-  networkHeat: {
-    level: "low" | "medium" | "high"
-    label: string
-    value: string
-  }
+export type PulseSnapshot = {
+  date: string
+  signals: SignalCard[]
 }

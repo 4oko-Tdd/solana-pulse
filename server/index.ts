@@ -17,7 +17,7 @@ if (!DUNE_API_KEY) {
 const dune = new DuneClient(DUNE_API_KEY)
 const QUERY_ID = 6663338
 
-type Signal = "up" | "down" | "flat"
+type SignalDirection = "up" | "down" | "flat"
 
 interface DuneRow {
   blockchain: string
@@ -29,9 +29,17 @@ interface DuneRow {
   daily_tvl_usd: number
 }
 
-function toSignal(change: number): Signal {
-  if (change > 1) return "up"
-  if (change < -1) return "down"
+type SignalCard = {
+  id: string
+  title: string
+  signal: SignalDirection
+  state: string
+  context?: string
+}
+
+function toSignal(change: number, threshold: number): SignalDirection {
+  if (change > threshold) return "up"
+  if (change < -threshold) return "down"
   return "flat"
 }
 
@@ -40,65 +48,79 @@ function formatDelta(change: number): string {
   return `${sign}${change.toFixed(1)}%`
 }
 
-function formatTvl(usd: number): string {
-  return `$${(usd / 1e9).toFixed(2)}B`
-}
-
-function computeHeatLevel(txChange: number, addrChange: number): "low" | "medium" | "high" {
-  const avg = (Math.abs(txChange) + Math.abs(addrChange)) / 2
-  if (avg > 15) return "high"
-  if (avg > 5) return "medium"
-  return "low"
+const stateMap: Record<string, Record<SignalDirection, string>> = {
+  "network-activity": { up: "Heating up", flat: "Normal range", down: "Cooling down" },
+  "defi-momentum": { up: "Inflow", flat: "Flat", down: "Outflow" },
+  "user-demand": { up: "Demand rising", flat: "Normal", down: "Demand cooling" },
+  "attention": { up: "Attention spike", flat: "Normal", down: "Low attention" },
+  "stability": { up: "Stable", flat: "Stable", down: "Degraded" },
 }
 
 function transformRow(row: DuneRow) {
   const txChange = Number(row.weekly_transactions_change)
   const addrChange = Number(row.weekly_active_addresses_change)
   const tvlChange = Number(row.daily_tvl_usd_change)
-  const heatLevel = computeHeatLevel(txChange, addrChange)
+
+  // Aggregate network activity: average of tx + wallet change
+  const networkDelta = (txChange + addrChange) / 2
+  const networkSignal = toSignal(networkDelta, 3)
+
+  const defiSignal = toSignal(tvlChange, 2)
+
+  const signals: SignalCard[] = [
+    // Card 1: Network Activity (real data)
+    {
+      id: "network-activity",
+      title: "Network Activity",
+      signal: networkSignal,
+      state: stateMap["network-activity"][networkSignal],
+      context: `${formatDelta(networkDelta)} vs 7d avg`,
+    },
+    // Card 2: DeFi Momentum (real data)
+    {
+      id: "defi-momentum",
+      title: "DeFi Momentum",
+      signal: defiSignal,
+      state: stateMap["defi-momentum"][defiSignal],
+      context: `${formatDelta(tvlChange)} TVL (24h)`,
+    },
+    // Card 3: User Demand (mock — no fee data yet)
+    {
+      id: "user-demand",
+      title: "User Demand",
+      signal: "up",
+      state: "Demand rising",
+      context: "+4.8% vs 7d avg",
+    },
+    // Card 4: Attention / Fees (mock — no fee data yet)
+    {
+      id: "attention",
+      title: "Attention / Fees",
+      signal: "flat",
+      state: "Normal",
+      context: "~0% fee delta",
+    },
+    // Card 5: Protocol Highlight (mock — no per-protocol data yet)
+    {
+      id: "protocol-highlight",
+      title: "Protocol Highlight",
+      signal: "up",
+      state: "Jupiter surging",
+      context: "+18% users (24h)",
+    },
+    // Card 6: Stability (mock — no congestion data yet)
+    {
+      id: "stability",
+      title: "Stability",
+      signal: "flat",
+      state: "Stable",
+      context: "No congestion detected",
+    },
+  ]
 
   return {
-    timestamp: new Date().toISOString(),
-    ecosystemActivity: [
-      {
-        label: "Active Wallets",
-        value: formatDelta(addrChange),
-        signal: toSignal(addrChange),
-        subLabel: "7d change",
-      },
-      {
-        label: "Transactions",
-        value: formatDelta(txChange),
-        signal: toSignal(txChange),
-        subLabel: "7d change",
-      },
-    ],
-    defiMovement: [
-      {
-        label: "TVL Change",
-        value: formatDelta(tvlChange),
-        signal: toSignal(tvlChange),
-        subLabel: "24h delta",
-      },
-      {
-        label: "Total TVL",
-        value: formatTvl(row.daily_tvl_usd),
-        signal: toSignal(tvlChange),
-        subLabel: "current",
-      },
-    ],
-    protocolTraction: [
-      { name: "Solana Ecosystem", growth: formatDelta(txChange), signal: toSignal(txChange) },
-    ],
-    networkHeat: {
-      level: heatLevel,
-      label: "Network Load",
-      value: heatLevel === "high"
-        ? "Heavy activity"
-        : heatLevel === "medium"
-          ? "Moderate activity"
-          : "Low activity",
-    },
+    date: new Date().toISOString().slice(0, 10),
+    signals,
   }
 }
 

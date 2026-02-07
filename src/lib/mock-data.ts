@@ -1,22 +1,49 @@
-import type { PulseData } from "./types"
+import type { PulseSnapshot } from "./types"
 
-export const mockPulseData: PulseData = {
-  timestamp: new Date().toISOString(),
-  ecosystemActivity: [
-    { label: "Active Wallets", value: "+8.3%", signal: "up", subLabel: "vs 24h ago" },
-    { label: "Transactions", value: "+12.1%", signal: "up", subLabel: "vs 24h ago" },
+export const mockPulseData: PulseSnapshot = {
+  date: new Date().toISOString().slice(0, 10),
+  signals: [
+    {
+      id: "network-activity",
+      title: "Network Activity",
+      signal: "up",
+      state: "Heating up",
+      context: "+6.2% vs 7d avg",
+    },
+    {
+      id: "defi-momentum",
+      title: "DeFi Momentum",
+      signal: "up",
+      state: "Inflow",
+      context: "+3.2% TVL (24h)",
+    },
+    {
+      id: "user-demand",
+      title: "User Demand",
+      signal: "up",
+      state: "Demand rising",
+      context: "+4.8% vs 7d avg",
+    },
+    {
+      id: "attention",
+      title: "Attention / Fees",
+      signal: "flat",
+      state: "Normal",
+      context: "~0% fee delta",
+    },
+    {
+      id: "protocol-highlight",
+      title: "Protocol Highlight",
+      signal: "up",
+      state: "Jupiter surging",
+      context: "+18% users (24h)",
+    },
+    {
+      id: "stability",
+      title: "Stability",
+      signal: "flat",
+      state: "Stable",
+      context: "No congestion detected",
+    },
   ],
-  defiMovement: [
-    { label: "TVL 24h", value: "+3.2%", signal: "up", subLabel: "24h delta" },
-    { label: "TVL 7d", value: "-1.4%", signal: "down", subLabel: "7d delta" },
-  ],
-  protocolTraction: [
-    { name: "Jupiter", growth: "+24.5%", signal: "up" },
-    { name: "Marinade", growth: "+18.2%", signal: "up" },
-  ],
-  networkHeat: {
-    level: "medium",
-    label: "Network Load",
-    value: "Moderate activity",
-  },
 }

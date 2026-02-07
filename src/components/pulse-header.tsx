@@ -1,14 +1,26 @@
-import { Activity } from "lucide-react"
+function formatDate(iso: string): string {
+  const d = new Date(iso + "T00:00:00")
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
+}
 
-export function PulseHeader({ timestamp }: { timestamp: string }) {
+export function PulseHeader({ date }: { date: string }) {
   return (
-    <header className="flex items-center justify-between">
-      <div className="flex items-center gap-3">
-        <Activity className="h-6 w-6 text-emerald-500" />
-        <h1 className="text-xl font-bold">Solana Pulse</h1>
+    <header className="space-y-3">
+      <div className="flex items-center gap-2.5">
+        {/* Solana-colored pulse dot */}
+        <div className="relative flex h-2.5 w-2.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#14F195] opacity-40" />
+          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#14F195]" />
+        </div>
+        <h1 className="font-[family-name:var(--font-heading)] text-xl font-semibold tracking-tight">
+          Solana Pulse
+        </h1>
       </div>
-      <p className="text-xs text-zinc-500">
-        Updated {new Date(timestamp).toLocaleTimeString()}
+      <p className="text-sm text-zinc-500">
+        Daily snapshot of Solana ecosystem — signals, not noise
+      </p>
+      <p className="font-[family-name:var(--font-mono)] text-xs text-zinc-600">
+        Updated: {formatDate(date)}
       </p>
     </header>
   )
