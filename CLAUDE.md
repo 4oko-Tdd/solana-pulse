@@ -57,6 +57,12 @@ type PulseSnapshot = { date: string; signals: SignalCard[] }
 - **Layout:** 3×2 grid (desktop), 2×3 (tablet), 1×6 (mobile)
 - **Accent:** Solana gradient bar at page top
 
+## Analytics
+
+- **Umami** (privacy-friendly, self-hosted) via `analytics.findparty.online`
+- Script tag in `index.html` with `defer` attribute
+- Website ID: `4359a9f9-3317-41f2-838c-d74d7e9b8049`
+
 ## Conventions
 
 - TypeScript everywhere (frontend + server)
