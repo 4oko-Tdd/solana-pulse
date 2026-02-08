@@ -1,0 +1,47 @@
+{
+  "date": "2026-02-08",
+  "signals": [
+    {
+      "id": "network-activity",
+      "title": "Network Activity",
+      "signal": "up",
+      "state": "Heating up",
+      "context": "+9.5% vs 7d avg"
+    },
+    {
+      "id": "defi-momentum",
+      "title": "DeFi Momentum",
+      "signal": "down",
+      "state": "Outflow",
+      "context": "-9.4% TVL (24h)"
+    },
+    {
+      "id": "user-demand",
+      "title": "User Demand",
+      "signal": "up",
+      "state": "Demand rising",
+      "context": "+19.1% tx/wallet delta · 70.1 tx/wallet"
+    },
+    {
+      "id": "attention",
+      "title": "Attention / Fees",
+      "signal": "down",
+      "state": "Fees dropping",
+      "context": "-22.6% fee delta (24h)"
+    },
+    {
+      "id": "protocol-highlight",
+      "title": "Protocol Highlight",
+      "signal": "up",
+      "state": "Manifest Trade surging",
+      "context": "+43.7% TVL (24h) · $12M"
+    },
+    {
+      "id": "stability",
+      "title": "Stability",
+      "signal": "flat",
+      "state": "Stable",
+      "context": "391ms avg slot (400ms target)"
+    }
+  ]
+}

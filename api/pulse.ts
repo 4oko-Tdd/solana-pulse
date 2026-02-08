@@ -106,7 +106,7 @@ export default async function handler(_req: VercelRequest, res: VercelResponse) 
     const dune = new DuneClient(apiKey)
     const result = await dune.getLatestResult({ queryId: QUERY_ID })
 
-    const rows = result.result?.rows as DuneRow[] | undefined
+    const rows = result.result?.rows as unknown as DuneRow[] | undefined
     if (!rows || rows.length === 0) {
       return res.status(502).json({ error: "No data from Dune" })
     }
