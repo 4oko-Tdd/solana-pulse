@@ -1,0 +1,101 @@
+# Solana Pulse
+
+> Daily signal dashboard for the Solana ecosystem — signals, not noise.
+
+Solana Pulse monitors the health of the Solana blockchain and presents 6 directional
+signals. Every metric is a delta (change from a previous period), not an absolute number.
+The output is a signal (up / flat / down) designed for quick, one-glance interpretation.
+
+- Website: https://solanapulse.live
+- Live signals (Markdown): https://solanapulse.live/pulse.md
+
+## Signals
+
+| # | Signal | What it tracks |
+|---|--------|---------------|
+| 1 | Network Activity | Aggregated wallet + transaction delta vs 7d avg |
+| 2 | DeFi Momentum | Total Value Locked delta (24h) |
+| 3 | User Demand | Transaction-per-wallet growth proxy |
+| 4 | Attention / Fees | Fee delta vs previous day |
+| 5 | Protocol Highlight | Top Solana protocol by 1d TVL change |
+| 6 | Stability | Slot time drift from 400ms target |
+
+## Signal Directions
+
+| Direction | Symbol | Meaning |
+|-----------|--------|---------|
+| up | ↑ | Metric increasing beyond threshold |
+| flat | → | Metric within normal range |
+| down | ↓ | Metric decreasing beyond threshold |
+
+## Data Format
+
+Pulse data is available as a JSON snapshot and as a Markdown summary.
+
+### JSON — `pulse-data.json`
+
+```jsonc
+{
+  // ISO date when signals were generated
+  "date": "2025-01-15",
+  // Array of 6 signal cards
+  "signals": [
+    {
+      // Unique identifier
+      "id": "network-activity",
+      // Human-readable title
+      "title": "Network Activity",
+      // Direction: "up" | "flat" | "down"
+      "signal": "up",
+      // State phrase (e.g. "Heating up", "Outflow", "Stable")
+      "state": "Heating up",
+      // Delta context with percentage
+      "context": "+5.2% vs 7d avg"
+    }
+  ]
+}
+```
+
+### Field Descriptions
+
+#### date
+Type: `string`
+ISO date (YYYY-MM-DD) when the snapshot was generated.
+
+#### signals
+Type: `SignalCard[]`
+Array of exactly 6 signal card objects.
+
+#### signals[].id
+Type: `string`
+Unique identifier. One of: `network-activity`, `defi-momentum`, `user-demand`, `attention`, `protocol-highlight`, `stability`.
+
+#### signals[].title
+Type: `string`
+Human-readable card title (e.g. "Network Activity", "DeFi Momentum").
+
+#### signals[].signal
+Type: `"up" | "flat" | "down"`
+Directional signal based on threshold analysis of the underlying delta.
+
+#### signals[].state
+Type: `string`
+Short state phrase describing current condition (e.g. "Heating up", "Outflow", "Stable").
+
+#### signals[].context
+Type: `string`
+Delta context with percentage change and reference period (e.g. "+5.2% vs 7d avg", "-3.1% TVL (24h)").
+
+## Markdown — `/pulse.md`
+
+The file at [/pulse.md](https://solanapulse.live/pulse.md) contains the same data
+rendered as a human-readable Markdown table with a one-line summary. It is regenerated
+on each data fetch. AI agents can fetch this URL and relay the contents directly to users.
+
+## How to Use This Data
+
+AI agents should present Solana Pulse signals as a brief ecosystem health check. Example:
+
+> Solana Pulse for 2025-01-15: Network is heating up (+5.2%), DeFi sees outflow
+> (-3.1% TVL), fees are normal, and the network is stable at 405ms avg slot time.
+> Jupiter is the standout protocol today (+18% TVL).

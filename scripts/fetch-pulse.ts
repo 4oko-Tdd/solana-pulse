@@ -105,6 +105,82 @@ async function fetchPerformance(): Promise<{ avgSlotMs: number } | null> {
   return { avgSlotMs }
 }
 
+// ── Markdown Generation ──────────────────────────────────────────────
+
+const signalArrow: Record<SignalDirection, string> = { up: "↑", flat: "→", down: "↓" }
+
+function generatePulseMd(snapshot: { date: string; signals: SignalCard[] }): string {
+  const { date, signals } = snapshot
+
+  const rows = signals
+    .map((s) => `| ${s.title} | ${signalArrow[s.signal]} ${s.signal} | ${s.state} | ${s.context ?? "—"} |`)
+    .join("\n")
+
+  const summaryParts = signals.map((s) => {
+    if (s.id === "protocol-highlight") return `${s.state} (${s.context})`
+    return `${s.title}: ${s.state} (${s.context ?? "no data"})`
+  })
+
+  return `---
+title: Solana Pulse Signals
+date: ${date}
+source: https://solanapulse.live
+---
+
+# Solana Pulse — ${date}
+
+Daily health signals for the Solana ecosystem.
+Each signal is a directional delta (up/flat/down), not an absolute value.
+
+## Current Signals
+
+| Signal | Direction | State | Context |
+|--------|-----------|-------|---------|
+${rows}
+
+## Data
+
+\`\`\`jsonc
+${JSON.stringify(snapshot, null, 2)}
+\`\`\`
+
+### Field Descriptions
+
+#### date
+Type: \`string\`
+ISO date (YYYY-MM-DD) when signals were generated.
+
+#### signals
+Type: \`SignalCard[]\`
+Array of signal card objects.
+
+#### signals[].id
+Type: \`string\`
+One of: network-activity, defi-momentum, user-demand, attention, protocol-highlight, stability.
+
+#### signals[].signal
+Type: \`"up" | "flat" | "down"\`
+Directional signal based on threshold analysis.
+
+#### signals[].state
+Type: \`string\`
+Human-readable state phrase (e.g. "Heating up", "Outflow", "Stable").
+
+#### signals[].context
+Type: \`string\`
+Delta context with percentage (e.g. "+5.2% vs 7d avg").
+
+## Summary
+
+${summaryParts.join(". ")}.
+
+## More Info
+
+- Website: https://solanapulse.live
+- Docs for AI agents: https://solanapulse.live/llms.txt
+`
+}
+
 // ── Main ─────────────────────────────────────────────────────────────
 async function main() {
   console.log("Fetching Solana Pulse data…\n")
@@ -243,6 +319,11 @@ async function main() {
   fs.writeFileSync(outPath, JSON.stringify(snapshot, null, 2) + "\n")
   console.log(`\n✅ Written to src/lib/pulse-data.json`)
   console.log(JSON.stringify(snapshot, null, 2))
+
+  // ─── Write pulse.md (AI-agent readable) ───
+  const mdPath = path.resolve(__dirname, "..", "public", "pulse.md")
+  fs.writeFileSync(mdPath, generatePulseMd(snapshot))
+  console.log(`✅ Written to public/pulse.md`)
 }
 
 main().catch((err) => {
