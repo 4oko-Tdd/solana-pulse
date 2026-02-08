@@ -159,9 +159,21 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.signal-card:hover {
-  border-color: rgba(153, 69, 255, 0.15);
-  box-shadow: 0 0 20px rgba(153, 69, 255, 0.06);
+/* Touch feedback for mobile */
+@media (hover: none) {
+  .signal-card:active {
+    border-color: rgba(153, 69, 255, 0.2);
+    box-shadow: 0 0 16px rgba(153, 69, 255, 0.08);
+    transform: scale(0.98);
+    transition: all 0.1s ease;
+  }
+}
+
+@media (hover: hover) {
+  .signal-card:hover {
+    border-color: rgba(153, 69, 255, 0.15);
+    box-shadow: 0 0 20px rgba(153, 69, 255, 0.06);
+  }
 }
 
 /* Staggered card entrance */
@@ -181,8 +193,8 @@
 }
 
 .signal-card:nth-child(1) { animation-delay: 0ms; }
-.signal-card:nth-child(2) { animation-delay: 60ms; }
-.signal-card:nth-child(3) { animation-delay: 120ms; }
-.signal-card:nth-child(4) { animation-delay: 180ms; }
-.signal-card:nth-child(5) { animation-delay: 240ms; }
-.signal-card:nth-child(6) { animation-delay: 300ms; }
+.signal-card:nth-child(2) { animation-delay: 40ms; }
+.signal-card:nth-child(3) { animation-delay: 80ms; }
+.signal-card:nth-child(4) { animation-delay: 120ms; }
+.signal-card:nth-child(5) { animation-delay: 160ms; }
+.signal-card:nth-child(6) { animation-delay: 200ms; }
