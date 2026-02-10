@@ -1,10 +1,10 @@
 ---
 title: Solana Pulse Signals
-date: 2026-02-09
+date: 2026-02-10
 source: https://solanapulse.live
 ---
 
-# Solana Pulse — 2026-02-09
+# Solana Pulse — 2026-02-10
 
 Daily health signals for the Solana ecosystem.
 Each signal is a directional delta (up/flat/down), not an absolute value.
@@ -16,15 +16,15 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
 | Network Activity | ↑ up | Heating up | +9.5% vs 7d avg |
 | DeFi Momentum | ↓ down | Outflow | -9.4% TVL (24h) |
 | User Demand | ↑ up | Demand rising | +19.1% tx/wallet delta · 70.1 tx/wallet |
-| Attention / Fees | ↓ down | Fees dropping | -8.8% fee delta (24h) |
-| Protocol Highlight | ↑ up | JupUSD surging | +31.0% TVL (24h) · $6M |
-| Stability | → flat | Stable | 393ms avg slot (400ms target) |
+| Attention / Fees | ↑ up | Fee spike | +5.9% fee delta (24h) |
+| Protocol Highlight | ↑ up | xStocks surging | +379.0% TVL (24h) · $886M |
+| Stability | → flat | Stable | 395ms avg slot (400ms target) |
 
 ## Data
 
 ```jsonc
 {
-  "date": "2026-02-09",
+  "date": "2026-02-10",
   "signals": [
     {
       "id": "network-activity",
@@ -50,23 +50,23 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
     {
       "id": "attention",
       "title": "Attention / Fees",
-      "signal": "down",
-      "state": "Fees dropping",
-      "context": "-8.8% fee delta (24h)"
+      "signal": "up",
+      "state": "Fee spike",
+      "context": "+5.9% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "JupUSD surging",
-      "context": "+31.0% TVL (24h) · $6M"
+      "state": "xStocks surging",
+      "context": "+379.0% TVL (24h) · $886M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "393ms avg slot (400ms target)"
+      "context": "395ms avg slot (400ms target)"
     }
   ]
 }
@@ -100,7 +100,7 @@ Delta context with percentage (e.g. "+5.2% vs 7d avg").
 
 ## Summary
 
-Network Activity: Heating up (+9.5% vs 7d avg). DeFi Momentum: Outflow (-9.4% TVL (24h)). User Demand: Demand rising (+19.1% tx/wallet delta · 70.1 tx/wallet). Attention / Fees: Fees dropping (-8.8% fee delta (24h)). JupUSD surging (+31.0% TVL (24h) · $6M). Stability: Stable (393ms avg slot (400ms target)).
+Network Activity: Heating up (+9.5% vs 7d avg). DeFi Momentum: Outflow (-9.4% TVL (24h)). User Demand: Demand rising (+19.1% tx/wallet delta · 70.1 tx/wallet). Attention / Fees: Fee spike (+5.9% fee delta (24h)). xStocks surging (+379.0% TVL (24h) · $886M). Stability: Stable (395ms avg slot (400ms target)).
 
 ## More Info
 
