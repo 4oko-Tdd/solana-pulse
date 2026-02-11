@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-10",
+  "date": "2026-02-11",
   "signals": [
     {
       "id": "network-activity",
@@ -25,23 +25,23 @@
     {
       "id": "attention",
       "title": "Attention / Fees",
-      "signal": "up",
-      "state": "Fee spike",
-      "context": "+5.9% fee delta (24h)"
+      "signal": "flat",
+      "state": "Normal",
+      "context": "-1.2% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "xStocks surging",
-      "context": "+379.0% TVL (24h) · $886M"
+      "state": "BitMart surging",
+      "context": "+473.9% TVL (24h) · $15M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "395ms avg slot (400ms target)"
+      "context": "394ms avg slot (400ms target)"
     }
   ]
 }
