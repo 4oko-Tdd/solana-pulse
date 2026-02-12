@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-11",
+  "date": "2026-02-12",
   "signals": [
     {
       "id": "network-activity",
@@ -27,21 +27,21 @@
       "title": "Attention / Fees",
       "signal": "flat",
       "state": "Normal",
-      "context": "-1.2% fee delta (24h)"
+      "context": "-4.5% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "BitMart surging",
-      "context": "+473.9% TVL (24h) · $15M"
+      "state": "JupUSD surging",
+      "context": "+469.2% TVL (24h) · $24M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "394ms avg slot (400ms target)"
+      "context": "390ms avg slot (400ms target)"
     }
   ]
 }
