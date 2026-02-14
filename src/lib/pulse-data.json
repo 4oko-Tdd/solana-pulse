@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-13",
+  "date": "2026-02-14",
   "signals": [
     {
       "id": "network-activity",
@@ -25,23 +25,23 @@
     {
       "id": "attention",
       "title": "Attention / Fees",
-      "signal": "down",
-      "state": "Fees dropping",
-      "context": "-8.2% fee delta (24h)"
+      "signal": "up",
+      "state": "Fee spike",
+      "context": "+9.9% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
       "state": "DefiTuna AMM surging",
-      "context": "+231.2% TVL (24h) · $6M"
+      "context": "+54.4% TVL (24h) · $9M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "389ms avg slot (400ms target)"
+      "context": "390ms avg slot (400ms target)"
     }
   ]
 }
