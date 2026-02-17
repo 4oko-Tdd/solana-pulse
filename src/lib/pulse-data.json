@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-16",
+  "date": "2026-02-17",
   "signals": [
     {
       "id": "network-activity",
@@ -27,21 +27,21 @@
       "title": "Attention / Fees",
       "signal": "up",
       "state": "Fee spike",
-      "context": "+5.1% fee delta (24h)"
+      "context": "+9.2% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "Bridgers surging",
-      "context": "+36.8% TVL (24h) · $2M"
+      "state": "Synatra surging",
+      "context": "+83.5% TVL (24h) · $6M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "389ms avg slot (400ms target)"
+      "context": "392ms avg slot (400ms target)"
     }
   ]
 }
