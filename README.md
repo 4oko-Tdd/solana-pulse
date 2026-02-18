@@ -1,59 +1,62 @@
 # Solana Pulse
 
-Daily signal dashboard for the Solana ecosystem. **Signals, not noise** — one glance to know what's happening today.
+> Daily signal dashboard for the Solana ecosystem — signals, not noise.
 
-## What It Shows
+**[Live Demo →](https://solanapulse.live)**
 
-6 signal cards, each answering one question:
+![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white&style=flat-square)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white&style=flat-square)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06b6d4?logo=tailwindcss&logoColor=white&style=flat-square)
+![Vite](https://img.shields.io/badge/Vite-6-646cff?logo=vite&logoColor=white&style=flat-square)
 
-| Card | Question | Data Source |
-|------|----------|-------------|
-| **Network Activity** | Is the network heating up? | Dune (wallets + TX 7d change) |
-| **DeFi Momentum** | Are funds flowing in? | Dune (TVL 24h delta) |
-| **User Demand** | Is usage intensifying? | Mock (v0) |
-| **Attention / Fees** | Is there speculative interest? | Mock (v0) |
-| **Protocol Highlight** | Any protocol surging? | Mock (v0) |
-| **Stability** | Is the network healthy? | Mock (v0) |
+One glance to know what's happening with Solana today. Six signal cards, each answering one question with a direction (↑ / → / ↓), a state phrase, and a delta for context.
 
-Each card shows: **▲/▬/▼ arrow → state phrase → small context**
+## Signal Cards
+
+| Card | Question | Data |
+|------|----------|------|
+| **Network Activity** | Is the network heating up? | Dune Analytics (wallets + TX 7d change) |
+| **DeFi Momentum** | Are funds flowing in? | Dune Analytics (TVL 24h delta) |
+| **User Demand** | Is usage intensifying? | TX-per-wallet growth proxy |
+| **Attention / Fees** | Is there speculative interest? | Fee delta vs previous day |
+| **Protocol Highlight** | Any protocol surging? | Top 1d TVL change |
+| **Stability** | Is the network healthy? | Slot time drift from 400ms target |
+
+Each card format: **arrow → state phrase → delta context**
 
 ## Design Principles
 
-- **Signal-first** — arrow → state → number (small). Not the other way around.
-- **Deltas over absolutes** — every metric is a change vs 7-day average
-- **One-glance UX** — understand "what's up with Solana today" in 5 seconds
-- **Daily snapshot** — not real-time, not analytics. One snapshot per day.
+- **Signal-first** — direction before numbers
+- **Deltas over absolutes** — every metric is a change from a prior period
+- **One-glance UX** — understand the ecosystem in 5 seconds
+- **Daily snapshot** — not real-time feeds, not analytics dashboards
 
 ## Tech Stack
 
-**Frontend:**
-- [Vite](https://vite.dev) + [React 19](https://react.dev) + TypeScript
-- [Tailwind CSS v4](https://tailwindcss.com)
-- Sora + IBM Plex Mono fonts
-- Solana brand colors (#9945FF, #14F195, #00C2FF)
+**Frontend** — Vite · React 19 · TypeScript · Tailwind CSS v4 · Sora + IBM Plex Mono fonts
 
-**Backend:**
-- [Express](https://expressjs.com) API server
-- [Dune Analytics SDK](https://docs.dune.com) — query 6663338
+**Backend** — Express API server · [Dune Analytics SDK](https://docs.dune.com) · Vercel Serverless
+
+**Design** — Dark theme (#0a0a0f) · Solana brand colors (#9945FF, #14F195, #00C2FF) · Glass-morphism cards
 
 ## Project Structure
 
 ```
-server/
-  index.ts               # Express server — GET /api/pulse, Dune SDK + signal logic
 src/
   components/
-    ui/                  # shadcn/ui primitives (Card, Badge)
-    dashboard.tsx        # 3×2 grid layout + micro-legend + footer
-    pulse-signal-card.tsx # Reusable signal card (arrow + state + context)
-    pulse-header.tsx     # Title + subtitle + date
+    dashboard.tsx          # 3×2 grid layout
+    pulse-signal-card.tsx  # Signal card (arrow + state + context)
+    pulse-header.tsx       # Title + date
   lib/
-    api.ts               # Frontend fetch client
-    types.ts             # SignalDirection, SignalCard, PulseSnapshot
-    mock-data.ts         # Fallback data (6 cards)
-    utils.ts             # cn() utility
-docs/
-  plans/                 # Design documents
+    api.ts                 # Frontend fetch client
+    types.ts               # SignalDirection, SignalCard, PulseSnapshot
+server/
+  index.ts                 # Express server — GET /api/pulse + Dune SDK logic
+api/
+  pulse.ts                 # Vercel serverless handler (same logic, edge-ready)
+public/
+  llms.txt                 # Machine-readable API docs for AI agents
+  pulse.md                 # Live signal snapshot as Markdown
 ```
 
 ## Getting Started
@@ -64,26 +67,24 @@ cd solana-pulse
 npm install
 ```
 
-### With live data (requires Dune API key)
+### With live Dune data
 
 ```bash
-# Create .env with your key
 cp .env.example .env
-# Edit .env and add your DUNE_API_KEY
+# Add your DUNE_API_KEY to .env
 
-# Start both servers
-npm run dev:all
+npm run dev:all   # starts both Vite + Express
 ```
 
-### Without API key (mock data)
+### Without an API key (mock data)
 
 ```bash
 npm run dev
 ```
 
-The dashboard will show mock data with an amber "Live data unavailable" banner.
+The dashboard shows the last cached snapshot with an amber "Live data unavailable" banner.
 
-## Scripts
+## Commands
 
 | Command | Description |
 |---------|-------------|
@@ -96,23 +97,23 @@ The dashboard will show mock data with an amber "Live data unavailable" banner.
 ## Data Flow
 
 ```
-Browser (React) → fetch("/api/pulse") → Express (:3001) → Dune SDK → Dune API
-                                              ↓
-                                     Transform to PulseSnapshot
-                                     (2 real + 4 mock signals)
-                                              ↓
-                                     JSON response → 6 signal cards
+Browser → fetch("/api/pulse") → Express (:3001) → Dune SDK → Dune API
+                                      ↓
+                               Transform to PulseSnapshot
+                               (2 live + 4 derived signals)
+                                      ↓
+                               JSON → 6 signal cards
 ```
 
 ## Roadmap
 
-- [x] Signal card dashboard (6 cards, v0 format)
+- [x] 6-card signal dashboard
 - [x] Dune Analytics integration (Network Activity + DeFi Momentum)
-- [x] Solana-branded design (gradient, glass cards, Sora font)
-- [ ] Wire real data for User Demand, Attention/Fees
-- [ ] Protocol traction detection (DeFiLlama)
-- [ ] Stability/congestion signal (Solana RPC)
-- [ ] Auto-refresh / daily cron
+- [x] Solana-branded design with glass-morphism cards
+- [x] Vercel serverless deployment
+- [x] AI agent endpoint (`/llms.txt`, `/pulse.md`)
+- [ ] Live data for User Demand, Fees, Stability (Solana RPC + DeFiLlama)
+- [ ] Daily cron refresh
 
 ## License
 
