@@ -1,10 +1,10 @@
 ---
 title: Solana Pulse Signals
-date: 2026-02-17
+date: 2026-02-18
 source: https://solanapulse.live
 ---
 
-# Solana Pulse — 2026-02-17
+# Solana Pulse — 2026-02-18
 
 Daily health signals for the Solana ecosystem.
 Each signal is a directional delta (up/flat/down), not an absolute value.
@@ -16,15 +16,15 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
 | Network Activity | ↑ up | Heating up | +9.5% vs 7d avg |
 | DeFi Momentum | ↓ down | Outflow | -9.4% TVL (24h) |
 | User Demand | ↑ up | Demand rising | +19.1% tx/wallet delta · 70.1 tx/wallet |
-| Attention / Fees | ↑ up | Fee spike | +9.2% fee delta (24h) |
-| Protocol Highlight | ↑ up | Synatra surging | +83.5% TVL (24h) · $6M |
-| Stability | → flat | Stable | 392ms avg slot (400ms target) |
+| Attention / Fees | ↑ up | Fee spike | +42.4% fee delta (24h) |
+| Protocol Highlight | ↑ up | Tothemoon surging | +30.1% TVL (24h) · $10M |
+| Stability | → flat | Stable | 394ms avg slot (400ms target) |
 
 ## Data
 
 ```jsonc
 {
-  "date": "2026-02-17",
+  "date": "2026-02-18",
   "signals": [
     {
       "id": "network-activity",
@@ -52,21 +52,21 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
       "title": "Attention / Fees",
       "signal": "up",
       "state": "Fee spike",
-      "context": "+9.2% fee delta (24h)"
+      "context": "+42.4% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "Synatra surging",
-      "context": "+83.5% TVL (24h) · $6M"
+      "state": "Tothemoon surging",
+      "context": "+30.1% TVL (24h) · $10M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "392ms avg slot (400ms target)"
+      "context": "394ms avg slot (400ms target)"
     }
   ]
 }
@@ -100,7 +100,7 @@ Delta context with percentage (e.g. "+5.2% vs 7d avg").
 
 ## Summary
 
-Network Activity: Heating up (+9.5% vs 7d avg). DeFi Momentum: Outflow (-9.4% TVL (24h)). User Demand: Demand rising (+19.1% tx/wallet delta · 70.1 tx/wallet). Attention / Fees: Fee spike (+9.2% fee delta (24h)). Synatra surging (+83.5% TVL (24h) · $6M). Stability: Stable (392ms avg slot (400ms target)).
+Network Activity: Heating up (+9.5% vs 7d avg). DeFi Momentum: Outflow (-9.4% TVL (24h)). User Demand: Demand rising (+19.1% tx/wallet delta · 70.1 tx/wallet). Attention / Fees: Fee spike (+42.4% fee delta (24h)). Tothemoon surging (+30.1% TVL (24h) · $10M). Stability: Stable (394ms avg slot (400ms target)).
 
 ## More Info
 

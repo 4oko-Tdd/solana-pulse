@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-17",
+  "date": "2026-02-18",
   "signals": [
     {
       "id": "network-activity",
@@ -27,21 +27,21 @@
       "title": "Attention / Fees",
       "signal": "up",
       "state": "Fee spike",
-      "context": "+9.2% fee delta (24h)"
+      "context": "+42.4% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "Synatra surging",
-      "context": "+83.5% TVL (24h) · $6M"
+      "state": "Tothemoon surging",
+      "context": "+30.1% TVL (24h) · $10M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "392ms avg slot (400ms target)"
+      "context": "394ms avg slot (400ms target)"
     }
   ]
 }
