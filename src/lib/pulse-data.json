@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-18",
+  "date": "2026-02-19",
   "signals": [
     {
       "id": "network-activity",
@@ -25,23 +25,23 @@
     {
       "id": "attention",
       "title": "Attention / Fees",
-      "signal": "up",
-      "state": "Fee spike",
-      "context": "+42.4% fee delta (24h)"
+      "signal": "down",
+      "state": "Fees dropping",
+      "context": "-17.8% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "Tothemoon surging",
-      "context": "+30.1% TVL (24h) · $10M"
+      "state": "Bridgers surging",
+      "context": "+45.2% TVL (24h) · $2M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "394ms avg slot (400ms target)"
+      "context": "395ms avg slot (400ms target)"
     }
   ]
 }
