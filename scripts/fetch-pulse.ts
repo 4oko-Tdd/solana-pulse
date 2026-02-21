@@ -43,7 +43,7 @@ async function fetchDune() {
   }
   const { DuneClient } = await import("@duneanalytics/client-sdk")
   const dune = new DuneClient(apiKey)
-  const result = await dune.getLatestResult({ queryId: 6663338 })
+  const result = await dune.getLatestResult({ queryId: 6723956 })
   const rows = result.result?.rows as Record<string, unknown>[] | undefined
   if (!rows?.length) {
     console.warn("  ⚠ Dune returned no rows")
@@ -326,7 +326,19 @@ async function main() {
   console.log(`✅ Written to public/pulse.md`)
 }
 
-main().catch((err) => {
-  console.error("Fatal:", err)
-  process.exit(1)
-})
+// ── Generate MD from existing JSON (no API calls) ────────────────────
+async function generateMdOnly() {
+  const __dirname = path.dirname(fileURLToPath(import.meta.url))
+  const jsonPath = path.resolve(__dirname, "..", "src", "lib", "pulse-data.json")
+  const snapshot = JSON.parse(fs.readFileSync(jsonPath, "utf-8")) as { date: string; signals: SignalCard[] }
+  const mdPath = path.resolve(__dirname, "..", "public", "pulse.md")
+  fs.writeFileSync(mdPath, generatePulseMd(snapshot))
+  console.log(`✅ Regenerated public/pulse.md from existing pulse-data.json (${snapshot.date})`)
+}
+
+const cmd = process.argv[2]
+if (cmd === "generate-md") {
+  generateMdOnly().catch((err) => { console.error("Fatal:", err); process.exit(1) })
+} else {
+  main().catch((err) => { console.error("Fatal:", err); process.exit(1) })
+}
