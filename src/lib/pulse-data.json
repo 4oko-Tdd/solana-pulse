@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-21",
+  "date": "2026-02-23",
   "signals": [
     {
       "id": "network-activity",
@@ -25,23 +25,23 @@
     {
       "id": "attention",
       "title": "Attention / Fees",
-      "signal": "up",
-      "state": "Fee spike",
-      "context": "+14.7% fee delta (24h)"
+      "signal": "flat",
+      "state": "Normal",
+      "context": "+2.0% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "CEX.IO surging",
-      "context": "+29.1% TVL (24h) · $10M"
+      "state": "Synatra surging",
+      "context": "+80.8% TVL (24h) · $6M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "393ms avg slot (400ms target)"
+      "context": "RPC unavailable"
     }
   ]
 }
