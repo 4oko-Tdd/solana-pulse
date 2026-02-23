@@ -6,21 +6,21 @@
       "title": "Network Activity",
       "signal": "down",
       "state": "Cooling down",
-      "context": "-18.4% vs 7d avg"
+      "context": "-7.4% vs 7d avg"
     },
     {
       "id": "defi-momentum",
       "title": "DeFi Momentum",
-      "signal": "flat",
-      "state": "Flat",
-      "context": "+1.3% TVL (24h)"
+      "signal": "down",
+      "state": "Outflow",
+      "context": "-4.2% TVL (24h)"
     },
     {
       "id": "user-demand",
       "title": "User Demand",
-      "signal": "flat",
-      "state": "Steady",
-      "context": "-2.6% tx/wallet delta · 66.8 tx/wallet"
+      "signal": "up",
+      "state": "Demand rising",
+      "context": "+13.2% tx/wallet delta · 77.0 tx/wallet"
     },
     {
       "id": "attention",
@@ -41,7 +41,7 @@
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "RPC unavailable"
+      "context": "392ms avg slot (400ms target)"
     }
   ]
 }
