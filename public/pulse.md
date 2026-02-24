@@ -1,10 +1,10 @@
 ---
 title: Solana Pulse Signals
-date: 2026-02-23
+date: 2026-02-24
 source: https://solanapulse.live
 ---
 
-# Solana Pulse — 2026-02-23
+# Solana Pulse — 2026-02-24
 
 Daily health signals for the Solana ecosystem.
 Each signal is a directional delta (up/flat/down), not an absolute value.
@@ -14,17 +14,17 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
 | Signal | Direction | State | Context |
 |--------|-----------|-------|---------|
 | Network Activity | ↓ down | Cooling down | -7.4% vs 7d avg |
-| DeFi Momentum | ↓ down | Outflow | -4.2% TVL (24h) |
+| DeFi Momentum | ↓ down | Outflow | -2.2% TVL (24h) |
 | User Demand | ↑ up | Demand rising | +13.2% tx/wallet delta · 77.0 tx/wallet |
-| Attention / Fees | → flat | Normal | +2.0% fee delta (24h) |
-| Protocol Highlight | ↑ up | Synatra surging | +80.8% TVL (24h) · $6M |
-| Stability | → flat | Stable | 392ms avg slot (400ms target) |
+| Attention / Fees | → flat | No data | API unavailable |
+| Protocol Highlight | ↑ up | Tothemoon surging | +15.3% TVL (24h) · $8M |
+| Stability | → flat | Stable | 394ms avg slot (400ms target) |
 
 ## Data
 
 ```jsonc
 {
-  "date": "2026-02-23",
+  "date": "2026-02-24",
   "signals": [
     {
       "id": "network-activity",
@@ -38,7 +38,7 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
       "title": "DeFi Momentum",
       "signal": "down",
       "state": "Outflow",
-      "context": "-4.2% TVL (24h)"
+      "context": "-2.2% TVL (24h)"
     },
     {
       "id": "user-demand",
@@ -51,22 +51,22 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
       "id": "attention",
       "title": "Attention / Fees",
       "signal": "flat",
-      "state": "Normal",
-      "context": "+2.0% fee delta (24h)"
+      "state": "No data",
+      "context": "API unavailable"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "Synatra surging",
-      "context": "+80.8% TVL (24h) · $6M"
+      "state": "Tothemoon surging",
+      "context": "+15.3% TVL (24h) · $8M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "392ms avg slot (400ms target)"
+      "context": "394ms avg slot (400ms target)"
     }
   ]
 }
@@ -100,7 +100,7 @@ Delta context with percentage (e.g. "+5.2% vs 7d avg").
 
 ## Summary
 
-Network Activity: Cooling down (-7.4% vs 7d avg). DeFi Momentum: Outflow (-4.2% TVL (24h)). User Demand: Demand rising (+13.2% tx/wallet delta · 77.0 tx/wallet). Attention / Fees: Normal (+2.0% fee delta (24h)). Synatra surging (+80.8% TVL (24h) · $6M). Stability: Stable (392ms avg slot (400ms target)).
+Network Activity: Cooling down (-7.4% vs 7d avg). DeFi Momentum: Outflow (-2.2% TVL (24h)). User Demand: Demand rising (+13.2% tx/wallet delta · 77.0 tx/wallet). Attention / Fees: No data (API unavailable). Tothemoon surging (+15.3% TVL (24h) · $8M). Stability: Stable (394ms avg slot (400ms target)).
 
 ## More Info
 
