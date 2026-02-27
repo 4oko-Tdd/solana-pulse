@@ -1,10 +1,10 @@
 ---
 title: Solana Pulse Signals
-date: 2026-02-26
+date: 2026-02-27
 source: https://solanapulse.live
 ---
 
-# Solana Pulse — 2026-02-26
+# Solana Pulse — 2026-02-27
 
 Daily health signals for the Solana ecosystem.
 Each signal is a directional delta (up/flat/down), not an absolute value.
@@ -14,17 +14,17 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
 | Signal | Direction | State | Context |
 |--------|-----------|-------|---------|
 | Network Activity | ↓ down | Cooling down | -7.4% vs 7d avg |
-| DeFi Momentum | ↑ up | Inflow | +5.8% TVL (24h) |
+| DeFi Momentum | → flat | Flat | +0.4% TVL (24h) |
 | User Demand | ↑ up | Demand rising | +13.2% tx/wallet delta · 77.0 tx/wallet |
-| Attention / Fees | ↑ up | Fee spike | +6.5% fee delta (24h) |
-| Protocol Highlight | ↑ up | Privacy Cash surging | +20.1% TVL (24h) · $2M |
-| Stability | → flat | Stable | 395ms avg slot (400ms target) |
+| Attention / Fees | ↓ down | Fees dropping | -12.4% fee delta (24h) |
+| Protocol Highlight | ↑ up | Tothemoon surging | +19.8% TVL (24h) · $11M |
+| Stability | → flat | Stable | 394ms avg slot (400ms target) |
 
 ## Data
 
 ```jsonc
 {
-  "date": "2026-02-26",
+  "date": "2026-02-27",
   "signals": [
     {
       "id": "network-activity",
@@ -36,9 +36,9 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
     {
       "id": "defi-momentum",
       "title": "DeFi Momentum",
-      "signal": "up",
-      "state": "Inflow",
-      "context": "+5.8% TVL (24h)"
+      "signal": "flat",
+      "state": "Flat",
+      "context": "+0.4% TVL (24h)"
     },
     {
       "id": "user-demand",
@@ -50,23 +50,23 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
     {
       "id": "attention",
       "title": "Attention / Fees",
-      "signal": "up",
-      "state": "Fee spike",
-      "context": "+6.5% fee delta (24h)"
+      "signal": "down",
+      "state": "Fees dropping",
+      "context": "-12.4% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "Privacy Cash surging",
-      "context": "+20.1% TVL (24h) · $2M"
+      "state": "Tothemoon surging",
+      "context": "+19.8% TVL (24h) · $11M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "395ms avg slot (400ms target)"
+      "context": "394ms avg slot (400ms target)"
     }
   ]
 }
@@ -100,7 +100,7 @@ Delta context with percentage (e.g. "+5.2% vs 7d avg").
 
 ## Summary
 
-Network Activity: Cooling down (-7.4% vs 7d avg). DeFi Momentum: Inflow (+5.8% TVL (24h)). User Demand: Demand rising (+13.2% tx/wallet delta · 77.0 tx/wallet). Attention / Fees: Fee spike (+6.5% fee delta (24h)). Privacy Cash surging (+20.1% TVL (24h) · $2M). Stability: Stable (395ms avg slot (400ms target)).
+Network Activity: Cooling down (-7.4% vs 7d avg). DeFi Momentum: Flat (+0.4% TVL (24h)). User Demand: Demand rising (+13.2% tx/wallet delta · 77.0 tx/wallet). Attention / Fees: Fees dropping (-12.4% fee delta (24h)). Tothemoon surging (+19.8% TVL (24h) · $11M). Stability: Stable (394ms avg slot (400ms target)).
 
 ## More Info
 

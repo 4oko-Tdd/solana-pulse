@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-26",
+  "date": "2026-02-27",
   "signals": [
     {
       "id": "network-activity",
@@ -11,9 +11,9 @@
     {
       "id": "defi-momentum",
       "title": "DeFi Momentum",
-      "signal": "up",
-      "state": "Inflow",
-      "context": "+5.8% TVL (24h)"
+      "signal": "flat",
+      "state": "Flat",
+      "context": "+0.4% TVL (24h)"
     },
     {
       "id": "user-demand",
@@ -25,23 +25,23 @@
     {
       "id": "attention",
       "title": "Attention / Fees",
-      "signal": "up",
-      "state": "Fee spike",
-      "context": "+6.5% fee delta (24h)"
+      "signal": "down",
+      "state": "Fees dropping",
+      "context": "-12.4% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "Privacy Cash surging",
-      "context": "+20.1% TVL (24h) · $2M"
+      "state": "Tothemoon surging",
+      "context": "+19.8% TVL (24h) · $11M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "395ms avg slot (400ms target)"
+      "context": "394ms avg slot (400ms target)"
     }
   ]
 }
