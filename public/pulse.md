@@ -1,10 +1,10 @@
 ---
 title: Solana Pulse Signals
-date: 2026-02-27
+date: 2026-02-28
 source: https://solanapulse.live
 ---
 
-# Solana Pulse — 2026-02-27
+# Solana Pulse — 2026-02-28
 
 Daily health signals for the Solana ecosystem.
 Each signal is a directional delta (up/flat/down), not an absolute value.
@@ -14,17 +14,17 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
 | Signal | Direction | State | Context |
 |--------|-----------|-------|---------|
 | Network Activity | ↓ down | Cooling down | -7.4% vs 7d avg |
-| DeFi Momentum | → flat | Flat | +0.4% TVL (24h) |
+| DeFi Momentum | ↓ down | Outflow | -4.0% TVL (24h) |
 | User Demand | ↑ up | Demand rising | +13.2% tx/wallet delta · 77.0 tx/wallet |
-| Attention / Fees | ↓ down | Fees dropping | -12.4% fee delta (24h) |
-| Protocol Highlight | ↑ up | Tothemoon surging | +19.8% TVL (24h) · $11M |
+| Attention / Fees | → flat | Normal | +3.6% fee delta (24h) |
+| Protocol Highlight | ↑ up | DefiTuna AMM surging | +5.2% TVL (24h) · $8M |
 | Stability | → flat | Stable | 394ms avg slot (400ms target) |
 
 ## Data
 
 ```jsonc
 {
-  "date": "2026-02-27",
+  "date": "2026-02-28",
   "signals": [
     {
       "id": "network-activity",
@@ -36,9 +36,9 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
     {
       "id": "defi-momentum",
       "title": "DeFi Momentum",
-      "signal": "flat",
-      "state": "Flat",
-      "context": "+0.4% TVL (24h)"
+      "signal": "down",
+      "state": "Outflow",
+      "context": "-4.0% TVL (24h)"
     },
     {
       "id": "user-demand",
@@ -50,16 +50,16 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
     {
       "id": "attention",
       "title": "Attention / Fees",
-      "signal": "down",
-      "state": "Fees dropping",
-      "context": "-12.4% fee delta (24h)"
+      "signal": "flat",
+      "state": "Normal",
+      "context": "+3.6% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "Tothemoon surging",
-      "context": "+19.8% TVL (24h) · $11M"
+      "state": "DefiTuna AMM surging",
+      "context": "+5.2% TVL (24h) · $8M"
     },
     {
       "id": "stability",
@@ -100,7 +100,7 @@ Delta context with percentage (e.g. "+5.2% vs 7d avg").
 
 ## Summary
 
-Network Activity: Cooling down (-7.4% vs 7d avg). DeFi Momentum: Flat (+0.4% TVL (24h)). User Demand: Demand rising (+13.2% tx/wallet delta · 77.0 tx/wallet). Attention / Fees: Fees dropping (-12.4% fee delta (24h)). Tothemoon surging (+19.8% TVL (24h) · $11M). Stability: Stable (394ms avg slot (400ms target)).
+Network Activity: Cooling down (-7.4% vs 7d avg). DeFi Momentum: Outflow (-4.0% TVL (24h)). User Demand: Demand rising (+13.2% tx/wallet delta · 77.0 tx/wallet). Attention / Fees: Normal (+3.6% fee delta (24h)). DefiTuna AMM surging (+5.2% TVL (24h) · $8M). Stability: Stable (394ms avg slot (400ms target)).
 
 ## More Info
 

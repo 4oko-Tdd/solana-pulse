@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-27",
+  "date": "2026-02-28",
   "signals": [
     {
       "id": "network-activity",
@@ -11,9 +11,9 @@
     {
       "id": "defi-momentum",
       "title": "DeFi Momentum",
-      "signal": "flat",
-      "state": "Flat",
-      "context": "+0.4% TVL (24h)"
+      "signal": "down",
+      "state": "Outflow",
+      "context": "-4.0% TVL (24h)"
     },
     {
       "id": "user-demand",
@@ -25,16 +25,16 @@
     {
       "id": "attention",
       "title": "Attention / Fees",
-      "signal": "down",
-      "state": "Fees dropping",
-      "context": "-12.4% fee delta (24h)"
+      "signal": "flat",
+      "state": "Normal",
+      "context": "+3.6% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "Tothemoon surging",
-      "context": "+19.8% TVL (24h) · $11M"
+      "state": "DefiTuna AMM surging",
+      "context": "+5.2% TVL (24h) · $8M"
     },
     {
       "id": "stability",
