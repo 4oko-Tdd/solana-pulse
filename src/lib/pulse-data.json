@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-28",
+  "date": "2026-03-01",
   "signals": [
     {
       "id": "network-activity",
@@ -11,9 +11,9 @@
     {
       "id": "defi-momentum",
       "title": "DeFi Momentum",
-      "signal": "down",
-      "state": "Outflow",
-      "context": "-4.0% TVL (24h)"
+      "signal": "up",
+      "state": "Inflow",
+      "context": "+2.9% TVL (24h)"
     },
     {
       "id": "user-demand",
@@ -27,21 +27,21 @@
       "title": "Attention / Fees",
       "signal": "flat",
       "state": "Normal",
-      "context": "+3.6% fee delta (24h)"
+      "context": "-0.7% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "DefiTuna AMM surging",
-      "context": "+5.2% TVL (24h) · $8M"
+      "state": "JupUSD surging",
+      "context": "+2387.6% TVL (24h) · $57M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "394ms avg slot (400ms target)"
+      "context": "393ms avg slot (400ms target)"
     }
   ]
 }
