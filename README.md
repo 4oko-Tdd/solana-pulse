@@ -54,9 +54,6 @@ server/
   index.ts                 # Express server — GET /api/pulse + Dune SDK logic
 api/
   pulse.ts                 # Vercel serverless handler (same logic, edge-ready)
-public/
-  llms.txt                 # Machine-readable API docs for AI agents
-  pulse.md                 # Live signal snapshot as Markdown
 ```
 
 ## Getting Started
@@ -111,7 +108,6 @@ Browser → fetch("/api/pulse") → Express (:3001) → Dune SDK → Dune API
 - [x] Dune Analytics integration (Network Activity + DeFi Momentum)
 - [x] Solana-branded design with glass-morphism cards
 - [x] Vercel serverless deployment
-- [x] AI agent endpoint (`/llms.txt`, `/pulse.md`)
 - [ ] Live data for User Demand, Fees, Stability (Solana RPC + DeFiLlama)
 - [ ] Daily cron refresh
 
