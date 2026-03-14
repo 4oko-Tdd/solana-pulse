@@ -1,10 +1,10 @@
 ---
 title: Solana Pulse Signals
-date: 2026-03-01
+date: 2026-03-14
 source: https://solanapulse.live
 ---
 
-# Solana Pulse — 2026-03-01
+# Solana Pulse — 2026-03-14
 
 Daily health signals for the Solana ecosystem.
 Each signal is a directional delta (up/flat/down), not an absolute value.
@@ -13,60 +13,60 @@ Each signal is a directional delta (up/flat/down), not an absolute value.
 
 | Signal | Direction | State | Context |
 |--------|-----------|-------|---------|
-| Network Activity | ↓ down | Cooling down | -7.4% vs 7d avg |
-| DeFi Momentum | ↑ up | Inflow | +2.9% TVL (24h) |
-| User Demand | ↑ up | Demand rising | +13.2% tx/wallet delta · 77.0 tx/wallet |
-| Attention / Fees | → flat | Normal | -0.7% fee delta (24h) |
-| Protocol Highlight | ↑ up | JupUSD surging | +2387.6% TVL (24h) · $57M |
-| Stability | → flat | Stable | 393ms avg slot (400ms target) |
+| Network Activity | ↓ down | Cooling down | -5.3% vs 7d avg |
+| DeFi Momentum | → flat | Flat | +0.8% TVL (24h) |
+| User Demand | → flat | Steady | +4.7% tx/wallet delta · 88.1 tx/wallet |
+| Attention / Fees | → flat | Normal | -1.8% fee delta (24h) |
+| Protocol Highlight | ↑ up | DFDV Staked SOL surging | +25.9% TVL (24h) · $58M |
+| Stability | → flat | Stable | 391ms avg slot (400ms target) |
 
 ## Data
 
 ```jsonc
 {
-  "date": "2026-03-01",
+  "date": "2026-03-14",
   "signals": [
     {
       "id": "network-activity",
       "title": "Network Activity",
       "signal": "down",
       "state": "Cooling down",
-      "context": "-7.4% vs 7d avg"
+      "context": "-5.3% vs 7d avg"
     },
     {
       "id": "defi-momentum",
       "title": "DeFi Momentum",
-      "signal": "up",
-      "state": "Inflow",
-      "context": "+2.9% TVL (24h)"
+      "signal": "flat",
+      "state": "Flat",
+      "context": "+0.8% TVL (24h)"
     },
     {
       "id": "user-demand",
       "title": "User Demand",
-      "signal": "up",
-      "state": "Demand rising",
-      "context": "+13.2% tx/wallet delta · 77.0 tx/wallet"
+      "signal": "flat",
+      "state": "Steady",
+      "context": "+4.7% tx/wallet delta · 88.1 tx/wallet"
     },
     {
       "id": "attention",
       "title": "Attention / Fees",
       "signal": "flat",
       "state": "Normal",
-      "context": "-0.7% fee delta (24h)"
+      "context": "-1.8% fee delta (24h)"
     },
     {
       "id": "protocol-highlight",
       "title": "Protocol Highlight",
       "signal": "up",
-      "state": "JupUSD surging",
-      "context": "+2387.6% TVL (24h) · $57M"
+      "state": "DFDV Staked SOL surging",
+      "context": "+25.9% TVL (24h) · $58M"
     },
     {
       "id": "stability",
       "title": "Stability",
       "signal": "flat",
       "state": "Stable",
-      "context": "393ms avg slot (400ms target)"
+      "context": "391ms avg slot (400ms target)"
     }
   ]
 }
@@ -100,7 +100,7 @@ Delta context with percentage (e.g. "+5.2% vs 7d avg").
 
 ## Summary
 
-Network Activity: Cooling down (-7.4% vs 7d avg). DeFi Momentum: Inflow (+2.9% TVL (24h)). User Demand: Demand rising (+13.2% tx/wallet delta · 77.0 tx/wallet). Attention / Fees: Normal (-0.7% fee delta (24h)). JupUSD surging (+2387.6% TVL (24h) · $57M). Stability: Stable (393ms avg slot (400ms target)).
+Network Activity: Cooling down (-5.3% vs 7d avg). DeFi Momentum: Flat (+0.8% TVL (24h)). User Demand: Steady (+4.7% tx/wallet delta · 88.1 tx/wallet). Attention / Fees: Normal (-1.8% fee delta (24h)). DFDV Staked SOL surging (+25.9% TVL (24h) · $58M). Stability: Stable (391ms avg slot (400ms target)).
 
 ## More Info
 
